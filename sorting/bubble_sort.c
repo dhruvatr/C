@@ -70,7 +70,12 @@ void bubbleSort(int *arr, int size)
 void test()
 {
     const int size = 10;
-    int *arr = (int *)calloc(size, sizeof(int));
+    int *arr = calloc(size, sizeof(int));
+if (arr == NULL)
+{
+    perror("Memory allocation failed");
+    exit(EXIT_FAILURE);
+}
 
     /* generate size random numbers from 0 to 100 */
     for (int i = 0; i < size; i++)
@@ -86,9 +91,9 @@ void test()
 }
 
 /** Driver Code */
-int main(int argc, const char *argv[])
+int main(void)
 {
-    /* Intializes random number generator */
+    /* Initializes random number generator */
     srand(time(NULL));
     test();
     return 0;
